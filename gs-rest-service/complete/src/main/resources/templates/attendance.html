@@ -1,0 +1,57 @@
+<!DOCTYPE HTML>
+<html xmlns:form="http://www.w3.org/1999/html">
+<head>
+    <link rel="stylesheet" type="text/css" href="/css/style.css"/>
+    <title>Getting Started: Serving Web Content</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <script type="text/javascript">
+        //<![CDATA[
+        function ajaxResultGroups() {
+            var nb_groups = document.getElementById("nb_groups");
+            var xmlhttp = new XMLHttpRequest();
+            var para = document.getElementById("para").value;
+            var data1 = document.getElementById("data1").value;
+            var data2 = document.getElementById("data2").value;
+
+            xmlhttp.onreadystatechange=function() {
+                if (this.readyState==4 && this.status==200) {
+                    var response = this.responseText;
+                    nb_groups.innerHTML = response;
+                }
+                else {
+                    nb_groups.innerHTML = "<font color='gray' size='2'>Yuklanmoqda...</font>";
+                }
+            };
+            xmlhttp.open("GET", "getAttendance?para="+para+"&data1="+data1+"&data2="+data2, true);
+            xmlhttp.send();
+        }
+        //]]>
+    </script>
+</head>
+<body>
+<div align="center" style="margin-top: 20px; font-size: 20pt; border: 2px solid #424242; padding: 30px;">
+    <form>
+        <b>Boshlang'ish sana: </b><input type="date" name="data1" id="data1" style="font-size: 18pt;"/>
+        <b> Oxirgi sana: </b><input type="date" name="data2" id="data2" style="font-size: 18pt;"/>
+        <b style="margin-left: 20px;">Para: </b>
+        <select style="font-size: 16pt; width: 150px;" name="para" id="para">
+            <option value="0">Barchasi</option>
+            <option value="1">1-para</option>
+            <option value="2">2-para</option>
+            <option value="3">3-para</option>
+            <option value="4">4-para</option>
+            <option value="5">5-para</option>
+            <option value="6">6-para</option>
+        </select>
+        <br/>
+        <input type="button" class="button" value="Jo'natish" onclick="ajaxResultGroups()" style="font-size: 20pt; margin: 20px;"/>
+    </form>
+    <div>
+        <a href="../">Asosiy sahifaga</a>
+    </div>
+</div>
+<div id="nb_groups" align="center">
+
+</div>
+</body>
+</html>

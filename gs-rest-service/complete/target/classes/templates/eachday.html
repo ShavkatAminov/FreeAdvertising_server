@@ -1,0 +1,61 @@
+<!DOCTYPE HTML>
+<html xmlns:form="http://www.w3.org/1999/html">
+<head>
+    <link rel="stylesheet" type="text/css" href="/css/style.css"/>
+    <title>Getting Started: Serving Web Content</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <script type="text/javascript">
+        //<![CDATA[
+        function ajaxResultGroups() {
+            var nb_groups = document.getElementById("nb_groups");
+            var xmlhttp = new XMLHttpRequest();
+            var x1 = document.getElementById("para").value;
+            var x2 = document.getElementById("data").value;
+            var group = document.getElementById("groups").value;
+            xmlhttp.onreadystatechange=function() {
+                if (this.readyState==4 && this.status==200) {
+                    var response = this.responseText;
+                    nb_groups.innerHTML = response;
+                }
+                else {
+                    nb_groups.innerHTML = "<font color='gray' size='2'>Yuklanmoqda...</font>";
+                }
+            };
+
+            xmlhttp.open("GET", "nbInData?para="+x1+"&data="+x2+"&group="+group, true);
+            xmlhttp.send();
+        }
+        //]]>
+    </script>
+</head>
+<body>
+<div align="center" style="margin-top: 20px; font-size: 20pt; border: 2px solid #424242; padding: 30px;">
+    <form>
+        <b>Sana: </b><input type="date" name="data" id="data" style="font-size: 18pt;"/>
+        <b style="margin-left: 20px;">Para: </b>
+        <select style="font-size: 16pt; width: 150px;" name="para" id="para">
+            <option value="0">Barchasi</option>
+            <option value="1">1-para</option>
+            <option value="2">2-para</option>
+            <option value="3">3-para</option>
+            <option value="4">4-para</option>
+            <option value="5">5-para</option>
+            <option value="6">6-para</option>
+        </select>
+        <b>Guruh: </b>
+        <select id="groups" style="font-size: 16pt;">
+            <option value="0" th:text="Barchasi"></option>
+            <option th:each="p : ${groups}" th:value="${p.id}"  th:text="${p.name}"></option>
+        </select>
+        <br/>
+        <input type="button" class="button" value="Jo'natish" onclick="ajaxResultGroups()" style="font-size: 20pt; margin: 20px;"/>
+    </form>
+    <div>
+        <a href="../">Asosiy sahifaga</a>
+    </div>
+</div>
+<div id="nb_groups" align="center">
+
+</div>
+</body>
+</html>

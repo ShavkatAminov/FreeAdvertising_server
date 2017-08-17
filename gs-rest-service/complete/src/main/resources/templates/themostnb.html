@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" type="text/css" href="/css/style.css"/>
+    <title>Eng ko'p dars qoldirganlik bo'yicha</title>
+    <script type="text/javascript">
+        //<![CDATA[
+        function ajaxResultTheMost() {
+            var nb_groups = document.getElementById("nb_group");
+            var xmlhttp = new XMLHttpRequest();
+            var group = document.getElementById("groups").value;
+            var para = document.getElementById("para").value / 2;
+            xmlhttp.onreadystatechange=function() {
+                if (this.readyState==4 && this.status==200) {
+                    var response = this.responseText;
+                    nb_groups.innerHTML = response;
+                }
+                else {
+                    nb_groups.innerHTML = "<font color='gray' size='2'>Yuklanmoqda...</font>";
+                }
+            };
+            xmlhttp.open("GET", "thmost?group="+group+"&para="+para, true);
+            xmlhttp.send();
+        }
+        //]]>
+    </script>
+</head>
+<body>
+<div align="center" style="margin-top: 20px; font-size: 20pt; border: 2px solid #424242; padding: 30px;">
+    <form>
+        <b>Guruh: </b>
+        <select id="groups" style="font-size: 16pt; width: 150px;">
+            <option value="0" th:text="Barchasi"></option>
+            <option th:each="p : ${groups}" th:value="${p.id}"  th:text="${p.name}"></option>
+        </select>
+        <b>Qoldirilgan soatlar soni >= </b>
+        <select style="width: 80px; text-size: 14pt;" id="para" >
+            <option>0</option>
+            <option>2</option>
+            <option>4</option>
+            <option>6</option>
+            <option>8</option>
+            <option>10</option>
+            <option>12</option>
+            <option>14</option>
+            <option>16</option>
+            <option>18</option>
+            <option>20</option>
+            <option>22</option>
+            <option>24</option>
+            <option>26</option>
+            <option>28</option>
+            <option>30</option>
+            <option>32</option>
+            <option>34</option>
+            <option>36</option>
+            <option>38</option>
+            <option>40</option>
+            <option>42</option>
+            <option>44</option>
+            <option>46</option>
+            <option>48</option>
+            <option>50</option>
+            <option>52</option>
+            <option>54</option>
+            <option>56</option>
+            <option>58</option>
+            <option>60</option>
+            <option>62</option>
+            <option>64</option>
+            <option>66</option>
+            <option>68</option>
+            <option>70</option>
+            <option>72</option>
+            <option>74</option>
+            <option>76</option>
+            <option>78</option>
+            <option>80</option>
+            <option>82</option>
+            <option>84</option>
+            <option>86</option>
+            <option>88</option>
+            <option>90</option>
+            <option>92</option>
+            <option>94</option>
+            <option>96</option>
+            <option>98</option>
+            <option>100</option>
+        </select>
+        <br/>
+        <input type="button" class="button" value="Jo'natish" onclick="ajaxResultTheMost()" style="font-size: 20pt; margin: 20px;"/>
+    </form>
+    <div>
+        <a href="../">Asosiy sahifaga</a>
+    </div>
+</div>
+<div id="nb_group" align="center">
+
+</div>
+</body>
+</html>

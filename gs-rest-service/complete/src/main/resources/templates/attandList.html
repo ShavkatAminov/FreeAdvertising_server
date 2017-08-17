@@ -1,0 +1,32 @@
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" type="text/css" media="all" href="style.css"/>
+<body>
+<div>
+    <h1>Umumiy davomat</h1>
+    <h2 th:text="${whooleAttande}"/>
+</div>
+<div>
+    <h1>Kurslar davomatlari</h1>
+</div>
+<table>
+    <th width="30%">Kurs</th>
+    <th width="20%">Davomat</th>
+    <tr data-th-each="item : ${attandListCource}">
+        <td data-th-text="${item.groupName}">...</td>
+        <td data-th-text="${item.attandance}">...</td>
+    </tr>
+</table>
+<div>
+    <h1>Guruhlar davomatlari</h1>
+</div>
+<table>
+    <th width="30%">Guruh</th>
+    <th width="20%">Davomat</th>
+    <tr data-th-each="item : ${attandList}">
+        <td data-th-text="${item.groupName}">...</td>
+        <td data-th-text="${item.attandance}">...</td>
+    </tr>
+</table>
+
+
+</body>

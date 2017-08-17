@@ -1,0 +1,20 @@
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" type="text/css" media="all" href="style.css"/>
+<body>
+<div>
+    <h1>Ushbu sanada qoldirilgan darslar</h1>
+</div>
+<table>
+    <th width="40%">FIO</th>
+    <th width="20%">Guruh</th>
+    <th width="15%">Para</th>
+    <th width="25%">Sana</th>
+    <tr data-th-each="nb : ${nbs}">
+        <td data-th-text="${nb.studentName}">...</td>
+        <td data-th-text="${nb.groupName}">...</td>
+        <td data-th-text="${nb.para}">...</td>
+        <td data-th-text="${nb.data}">...</td>
+    </tr>
+</table>
+
+</body>

@@ -1,0 +1,16 @@
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" type="text/css" media="all" href="style.css"/>
+<body>
+<table>
+    <th width="10%">O'ring</th>
+    <th width="40%">FIO</th>
+    <th width="25%">Guruh</th>
+    <th width="25%">Qoldirilgan soatlar soni</th>
+    <tr data-th-each="item : ${list}">
+        <td data-th-text="${item.place}">...</td>
+        <td data-th-text="${item.studentName}">...</td>
+        <td data-th-text="${item.groupName}">...</td>
+        <td data-th-text="${item.cntNbs}*2">...</td>
+    </tr>
+</table>
+</body>
